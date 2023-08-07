@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Movies Hub{% endblock title %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/css/bootstrap.css' %}">
+    <link href="{% static 'movies/image/icon.png'%}" rel="icon">
+    {% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/css/custom.css' %}">
+    {% endblock style %}
+</head>
+<body>
+<div class="container-fluid bg-dark">
+    {% include 'movies/navbar.html'%}
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {% block mes%}
+            {% if info %}
+            <div class="alert alert-primary my-3 text-center" role="alert">
+                <h6>{{info}}</h6>
+            </div>
+            {% endif %}
+            {% endblock mes%}
+        </div>
+    </div>
+
+    <ul class="nav nav-pills card-header-pills mt-3">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Search any movie with title and year.</a>
+        </li>
+    </ul>
+
+    <form class="form-inline" method="post">
+        {% csrf_token %}
+        <div class="mt-4">
+            <label class="control-label" for="t">Movie Title : </label>
+            <input type="text" id="t" name="t" class="mx-3" placeholder="Thor">
+            <label class="control-label mx-3" for="y">Year : </label>
+            <input type="number" id="y" name="y" class="mx-3" style="width: 100px;" placeholder="YYYY">
+            <label class="control-label mx-3">Plot : </label>
+            <select name="plot" style="width: 100px;" class="custom-select">
+                <option value="short" selected>Short</option>
+                <option value="full">Full</option>
+            </select>
+            <input type="submit" class="btn btn-primary mx-3 " value="Search">
+        </div>
+    </form>
+
+    <div class="row">
+        {% block side%}
+        {% endblock side%}
+
+        {% block content%}
+        {% endblock content%}
+    </div>
+</div>
+
+<script src="{% static 'movies/js/bootstrap.js' %}"/>
+<script src="{% static 'movies/js/jquery.js' %}"/>
+<script src="{% static 'movies/js/popper.js' %}"/>
+<script src="{% static 'movies/js/custom.js' %}"/>
+</body>
+</html>

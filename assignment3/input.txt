@@ -1,0 +1,2 @@
+This is a sample text file.It contains multiple lines of text.Each line serves as an example.
+You can perform various operations on this file.Count the number of lines or words.Search for specific words or phrases.Manipulate the content as needed.Feel free to modify this file for testing purposes.
